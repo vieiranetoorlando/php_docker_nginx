@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    container_name: app-setup-7
+    volumes:
+      - .:/var/www
+    networks:
+      - app-network
+  nginx:
+    build: .docker/nginx
+    container_name: app-nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www
+    networks:
+      - app-network    
+    depends_on:
+      - app
+networks:
+  app-network:
+    driver: bridge  
