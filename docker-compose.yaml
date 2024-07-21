@@ -6,6 +6,7 @@ services:
     container_name: app-setup-7
     volumes:
       - .:/var/www
+      - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
     networks:
       - app-network
   nginx:
